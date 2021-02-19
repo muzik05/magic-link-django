@@ -15,7 +15,7 @@ def index(req):
 
 @require_POST
 def send_magic(req):
-	if 'email' not in req.POST:
+	if 'email' not in req.POST or len(req.POST['email'])<1:
 		return render(req, 'res.html',{'err':'Empty Mail Address'})
 	hash = hash(req.POST['email'])
 	if send_mail(email,hash):
