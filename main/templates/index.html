@@ -1,0 +1,30 @@
+<head>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+	{% if err %}<p><strong>{{ err }}</strong></p>{% endif %}
+	<form style="margin:10px" action="/send_magic/" method="post">
+		{% csrf_token %}
+	  <label>Email address:</label>
+		<input type="email" name="email" placeholder="Enter email">
+		<button type="submit" class="btn btn-success">Send Magic Link</button>
+	</form>
+	<table class="table table-sm" style="max-width:500px">
+	  <thead>
+	    <tr>
+	      <th style="max-width:10px">#</th>
+	      <th>Email</th>
+	      <th style="max-width:10px">Clicked</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+			{% for user in users %}
+		    <tr>
+		      <th>{{ foorlop.counter }}</th>
+		      <td>{{ user.email }}</td>
+		      <td>{{ user.clicks }}</td>
+		    </tr>
+			{% endfor %}
+	  </tbody>
+	</table>
+</body>
